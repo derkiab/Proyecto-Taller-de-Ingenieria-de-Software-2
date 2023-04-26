@@ -32,7 +32,7 @@
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <div class="photo">
-                        <img src="/imagen/{{ Auth::user()->image }}" id="logout" >
+                        <img src="/imagen/{{ Auth::user()->image }}" id="logout" style="width: 50px;">
                     </div>
 
                 </a>
