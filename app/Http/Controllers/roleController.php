@@ -110,7 +110,7 @@ class roleController extends Controller
         $role = Role::find($id);
         $role->delete();
 
-        return response()->json(['success' => true]);
+        return redirect('/admin/roles')->with('success', 'Rol eliminado exitosamente!');
 
     }
 }

@@ -40,7 +40,6 @@ Route::group(['middleware' => ['permission:vista admin'], 'prefix' => 'admin'], 
     Route::get('/permissions/{id}/edit', [App\Http\Controllers\permissionController::class, 'edit'])->name('permissions.edit');
     Route::patch('/permissions/{id}', [App\Http\Controllers\permissionController::class, 'update'])->name('permissions.update');
     Route::delete('/permissions/{id}', [App\Http\Controllers\permissionController::class, 'destroy'])->name('permissions.destroy');
-    
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
     Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');

@@ -26,6 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
         'tipo_de_cuenta',
+        'image'
     ];
 
     public function getTipoDeCuenta($value)

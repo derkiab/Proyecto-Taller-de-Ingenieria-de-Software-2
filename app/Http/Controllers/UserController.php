@@ -51,20 +51,26 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'run' => 'required|unique:users,run',
+            'run' => 'required|unique:users,run|regex:/^\d{7,8}-[0-9K]$/',
             'name' => 'required',
             'email' => 'required|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'tipo_de_cuenta' => 'nullable',
             'role' => 'nullable',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg,bmp,gif|max:2048'
         ]);
-
+        if($image = $request->file('image')){
+            $rutaGuardarImg = 'imagen/';
+            $imagenUser = date('YmdHis').".".$image->getClientOriginalExtension();
+            $image->move($rutaGuardarImg,$imagenUser);
+        }
         $user = new User([
             'run' => $request->get('run'),
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
             'tipo_de_cuenta' => $request->get('tipo_de_cuenta'),
+            'image' => $imagenUser
         ]);
 
         $user->save();
@@ -110,16 +116,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'run' => 'required|unique:users,run|regex:/^\d{7,8}-[0-9K]$/',
             'name' => 'required',
             'email' => 'required',
             'tipo_de_cuenta' => 'nullable',
             'role' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg,bmp,gif|max:2048'
         ]);
 
         $user = User::find($id);
+        $user->run = $request->get('run');
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->tipo_de_cuenta = $request->get('tipo_de_cuenta');
+        if($image = $request->file('image')){
+            $rutaGuardarImg = 'imagen/';
+            $imagenUser = date('YmdHis').".".$image->getClientOriginalExtension();
+            $image->move($rutaGuardarImg,$imagenUser);
+            $user->image = $imagenUser;
+        }else{
+            unset($user->image);
+        }
         $user->save();
         $user->syncRoles([$request->role]);
 

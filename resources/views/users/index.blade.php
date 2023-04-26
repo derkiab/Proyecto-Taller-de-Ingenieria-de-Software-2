@@ -5,48 +5,44 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 @endsection
 
-    @if (session('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Exito',
-            text: '{{ session('success') }}',
-            timer: 3000
-        });
-    </script>
-    @endif
 
-    @if(session('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: '{{ session('error') }}'
-            });
-        </script>
-    @endif
-    <h1>Usuarios</h1>
-    <a href="{{ route('users.create') }}" class="btn btn-sm btn-outline-success mb-2"><i class="fa fa-plus"></i></a>
-    <table id="users-table" class="display" width="100%">
-        <thead>
-            <tr>
-                <th>Run</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($users as $user)
+@section('content')
+    <div class="container">
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Exito',
+                    text: '{{ session('
+                                success ') }}',
+                    timer: 3000
+                });
+            </script>
+        @endif
+
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{{ session('
+                                error ') }}'
+                });
+            </script>
+        @endif
+        <h1>Usuarios</h1>
+        <a href="{{ route('users.create') }}" class="btn btn-sm btn-outline-success mb-2"><i class="fa fa-plus"></i></a>
+        <table id="users-table" class=" table-striped table" width="100%">
+            <thead>
                 <tr>
                     <th>Run</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
-                    <th>Estado</th>
-                    <th>Visto por ultima vez</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Estado</th>
+                    <th class="text-center">Visto por ultima vez</th>
+                    <th class="text-center">Imagen</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,21 +54,28 @@
                         <td>
                             {{ $user->role }}
                         </td>
-                        <td>
+                        <td class="text-center">
                             @if (Cache::has('is_online' . $user->id))
                                 <span class="text-success">En linea</span>
                             @else
                                 <span class="text-secondary">Desconectado</span>
                             @endif
                         </td>
-                        <td>{{ \Carbon\Carbon::parse($user->last_seen)->format('Y-m-d H') }}</td>
+                        <td class="text-center">{{ \Carbon\Carbon::parse($user->last_seen)->format('Y-m-d H') }}hrs</td>
                         <td>
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                            <div class="container d-flex justify-content-center">
+                                <img src="/imagen/{{ $user->image }}" width="10%">
+                            </div>
+
+                        </td>
+                        <td class="text-center">
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-outline-primary"><i
+                                    class="fa fa-edit"></i></a>
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn btn-sm btn-outline-danger delete-user"
-                                    data-id="{{ $user->id }}">Eliminar</button>
+                                    data-id="{{ $user->id }}"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -89,6 +92,10 @@
 
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+
     <script>
         $(document).ready(function() {
             $('#users-table').DataTable({

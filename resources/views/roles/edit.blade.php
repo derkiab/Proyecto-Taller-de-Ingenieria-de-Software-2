@@ -44,7 +44,6 @@
                                         selected='selected'
                                     @endif>Trabajador</option>
                                 </select>
-
                                 @error('role_type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -52,7 +51,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-sm btn-outline-primary">

@@ -27,7 +27,7 @@
             </script>
         @endif
         <h1>Permisos</h1>
-        <a href="{{ route('permissions.create') }}" class="btn btn-sm btn-outline-success mb-2">Agregar Permiso</a>
+        <a href="{{ route('permissions.create') }}" class="btn btn-sm btn-outline-success mb-2"><i class="fa fa-plus"></i></a>
         <table id="permissions-table" class="table table-striped" width="100%">
             <thead>
                 <tr>
@@ -45,14 +45,14 @@
                         <td class="text-center">{{ $permission->name }}</td>
                         <td class="text-center">
                             <a href="{{ route('permissions.edit', $permission->id) }}"
-                                class="btn btn-sm btn-outline-primary">Editar</a>
+                                class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></a>
                             </a>
                             <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST"
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn btn-sm btn-outline-danger delete-perm"
-                                    data-id="{{ $permission->id }}">Eliminar</button>
+                                    data-id="{{ $permission->id }}"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                         </td>
                     </tr>

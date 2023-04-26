@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('login')
+@section('content')
     <div id="login" class="container-fluid mt-0">
         <div id="page-content" class="row">
             <div id="region-main-box" class="col-12">
@@ -62,7 +62,7 @@
 
 
                                             <div class="form-group">
-                                                <div class="col-md-8 offset-md-4">
+                                                <div class="col d-flex justify-content-center">
                                                     <button type="submit" class="btn btn-primary">
                                                         {{ __('Ingreso') }}
                                                     </button>

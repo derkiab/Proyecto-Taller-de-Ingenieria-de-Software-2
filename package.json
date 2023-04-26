@@ -8,8 +8,6 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production"
-
-
     },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
@@ -23,6 +21,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "fullcalendar": "^6.1.6",
         "sweetalert2": "^11.7.3"
     }
 }

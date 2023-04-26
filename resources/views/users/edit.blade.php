@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Editar usuario') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('users.update', $user->id) }}">
+                    <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -16,7 +16,7 @@
                             <label for="run" class="col-md-4 col-form-label text-md-right">{{ __('Run') }}</label>
 
                             <div class="col-md-6">
-                                <input id="run" type="text" class="form-control @error('run') is-invalid @enderror" name="run" value="{{ $user->run }}" required autocomplete="run" autofocus>
+                                <input placeholder="11111111-1" id="run" type="text" class="form-control @error('run') is-invalid @enderror" name="run" value="{{ $user->run }}" required autocomplete="run" autofocus>
 
                                 @error('run')
                                     <span class="invalid-feedback" role="alert">
@@ -53,10 +53,9 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-right">Rol</label>
-        
+
                             <div class="col-md-6">
                                 <select class="form-control" id="role" @error('role') is-invalid @enderror" name="role">
                                     @foreach($roles as $role)
@@ -67,7 +66,7 @@
                                         >{{ $role }}</option>
                                     @endforeach
                                 </select>
-        
+
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -75,10 +74,20 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <!-- PARA VISUALIZAR LA IMAGEN -->
+                        <div class="form-group row mb-3">
+                            <img src="/imagen/{{ $user->image}}" id="imagenSeleccionada" style="max-height: 300px;">
+                        </div>
+                        <!-- input img -->
+                        <div class="form-group row mb-3">
+                            <input name="image" id="image" type="file">
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-sm btn-outline-primary">
+                                <a type="button" class="btn btn-sm btn-outline-danger" href="{{ route('users.index')}}">
+                                    {{ __('Cancelar') }}
+                                </a>
+                                <button type="submit" class="ms-2 btn btn-sm btn-outline-primary">
                                     {{ __('Guardar') }}
                                 </button>
                             </div>

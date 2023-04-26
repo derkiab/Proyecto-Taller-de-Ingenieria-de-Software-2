@@ -4,17 +4,20 @@
     text-align: center;
     margin-bottom: 10%;
 }
+img [id="logout"]{ 
+    width: 1%;
+}
 .signup-form,
 .reset-form {
     border-radius: 3px;
     margin-bottom: 15px;
-    background-color: #f2f3f7;
     box-shadow: 0px 2prgb(184, 184, 184)gba(0, 0, 0, 0.3);
     padding: 20px;
     width: 700px;
     margin: 0 auto;
     font-size: 15px;
 }
+
 .loginup-form button[id="button-login"],
 .signup-form button[id="button-save"] {
     background-color: #0069A5;
@@ -23,6 +26,7 @@
     min-width: 140px;
     outline: none !important;
 }
+
 .loginup-form button[id="button-save"] {
     background-color: #0069A5;
     color: #f2f3f7;
@@ -72,131 +76,150 @@
 }
 
 
-        body {
-            overflow-x: hidden;
-            background-color: #f2f3f7;
-            font-family: 'Montserrat', sans-serif;
-        }
+body {
+    overflow-x: hidden;
+    background-color: #f2f3f7;
+    font-family: 'Montserrat', sans-serif;
+}
 
-        #sidebar-wrapper {
-            min-height: 100vh;
-            margin-left: -15rem;
-            -webkit-transition: margin .25s ease-out;
-            -moz-transition: margin .25s ease-out;
-            -o-transition: margin .25s ease-out;
-            transition: margin .25s ease-out;
-        }
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
 
-        #sidebar-wrapper .sidebar-heading {
-            padding: 0.875rem 1.25rem;
-            font-size: 1.2rem;
-        }
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
 
-        #sidebar-wrapper .list-group {
-            width: 15rem;
-        }
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
 
-        #page-content-wrapper {
-            min-width: 100vw;
-        }
+#page-content-wrapper {
+    min-width: 100vw;
+}
 
-        #wrapper.toggled #sidebar-wrapper {
-            margin-left: 0;
-        }
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
 
-        @media (min-width: 768px) {
-            #sidebar-wrapper {
-                margin-left: 0;
-            }
 
-            #page-content-wrapper {
-                min-width: 0;
-                width: 100%;
-            }
 
-            #wrapper.toggled #sidebar-wrapper {
-                margin-left: -15rem;
-            }
-        }
-        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
 
-        html,body{
-        background-color: #1a2341;
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100%;
-        font-family: 'Montserrat';
-        }
-        
-        .container{
-        height: 100%;
-        align-content: center;
-        }
-        
-        .card{
-        height: 370px;
-        margin-top: auto;
-        margin-bottom: auto;
-        width: 400px;
-        background-color: #fff;  !important;
-        }
-        
-        
-        
-        .card-header h3{
-        color: #0069a5#;
-        }
-        
-        .input-group-prepend span{
-        width: 40px;
-        height: 40px;
-        background-color: #0069a5;
-        color: #1a2341;
-        border:0 !important;
-        }
-        
-        input:focus{
-        outline: 0 0 0 0  !important;
-        box-shadow: 0 0 0 0 !important;
-        
-        }
-        
-        .remember{
-        color: #1a2341;
-        
-        }
-        
-        img[id="logo"]{
-            vertical-align: middle;
-            border-style: none;
-            width: 200px; 
-            height: 60px;
-        }
-        .remember input
-        {
-        width: 20px;
-        height: 20px;
-        margin-left: 15px;
-        margin-right: 5px;
-        border-color: #32b0e4;
-        }
-        
-        .login_btn{
-        color: #1a2341;
-        background-color: #0069a5;
-        width: 100px;
-        }
-        
-        .login_btn:hover{
-        color: black;
-        background-color: #84c1ea;
-        }
-        
-        .links{
-        color: #84c1ea;
-        }
-        
-        .links a{
-        margin-left: 4px;
-        color: #223367;
-        }
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+html,
+body {
+    background-color: #1a2341;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Montserrat';
+}
+
+.signup-form .container-fluid[id="container-register"] {
+    height: 100%;
+    align-content: center;
+    background-color: ;
+    margin: 10px;
+}
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+
+.card-header h3 {
+    color: #0069a5#;
+}
+
+.signup-form .card-header[id="card-register"] {
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: #32b0e4 2px solid;
+    padding: 0% 10%;
+    color: #223367;
+    
+}
+
+.input-group-prepend span {
+    width: 40px;
+    height: 40px;
+    background-color: #0069a5;
+    color: #1a2341;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember {
+    color: #1a2341;
+
+}
+
+img[id="logo_ini"] {
+    vertical-align: middle;
+    border-style: none;
+    width: 140px;
+    height: 40px;
+}
+
+
+img[id="logo"] {
+    vertical-align: middle;
+    border-style: none;
+    width: 300px;
+    height: 60px;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+    border-color: #32b0e4;
+}
+
+.login_btn {
+    color: #1a2341;
+    background-color: #0069a5;
+    width: 100px;
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: #84c1ea;
+}
+
+.links {
+    color: #84c1ea;
+}
+
+.links a {
+    margin-left: 4px;
+    color: #223367;
+}
